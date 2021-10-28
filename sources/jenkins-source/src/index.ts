@@ -34,7 +34,7 @@ export class JenkinsSource extends AirbyteSourceBase {
     }
     return [true, undefined];
   }
-  streams(config: JenkinsConfig): AirbyteStreamBase[] {
+  async streams(config: JenkinsConfig): Promise<AirbyteStreamBase[]> {
     return [new Builds(config, this.logger), new Jobs(config, this.logger)];
   }
 }

@@ -53,7 +53,7 @@ export abstract class AirbyteSourceBase extends AirbyteSource {
    * spec. Any stream construction related operation should happen here.
    * @return A list of the streams in this source connector.
    */
-  abstract streams(config: AirbyteConfig): AirbyteStreamBase[];
+  abstract streams(config: AirbyteConfig): Promise<AirbyteStreamBase[]>;
 
   /**
    * Source name
@@ -67,7 +67,7 @@ export abstract class AirbyteSourceBase extends AirbyteSource {
    * https://docs.airbyte.io/architecture/airbyte-specification.
    */
   async discover(config: AirbyteConfig): Promise<AirbyteCatalogMessage> {
-    const streams = this.streams(config).map((stream) =>
+    const streams = (await this.streams(config)).map((stream) =>
       stream.asAirbyteStream()
     );
     return new AirbyteCatalogMessage({streams});
@@ -112,7 +112,9 @@ export abstract class AirbyteSourceBase extends AirbyteSource {
     // TODO: assert all streams exist in the connector
     // get the streams once in case the connector needs to make any queries to
     // generate them
-    const streamInstances = keyBy(this.streams(config), (s) => s.name);
+
+    const streams = await this.streams(config);
+    const streamInstances = keyBy(streams, (s) => s.name);
     for (const configuredStream of catalog.streams) {
       const streamName = configuredStream.stream.name;
       const streamInstance = streamInstances[streamName];

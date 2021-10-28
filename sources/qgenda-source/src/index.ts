@@ -1,6 +1,5 @@
 import {Command} from 'commander';
 import {
-  AirbyteConfig,
   AirbyteLogger,
   AirbyteSourceBase,
   AirbyteSourceRunner,
@@ -34,7 +33,7 @@ export class QGendaSource extends AirbyteSourceBase {
     }
     return [true, undefined];
   }
-  streams(config: QGendaConfig): AirbyteStreamBase[] {
+  async streams(config: QGendaConfig): Promise<AirbyteStreamBase[]> {
     return [
       new Company(config, this.logger),
       new Schedule(config, this.logger),

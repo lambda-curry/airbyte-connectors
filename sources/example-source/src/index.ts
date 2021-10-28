@@ -29,7 +29,7 @@ class ExampleSource extends AirbyteSourceBase {
     }
     return [false, new VError('User is not chris')];
   }
-  streams(config: AirbyteConfig): AirbyteStreamBase[] {
+  async streams(config: AirbyteConfig): Promise<AirbyteStreamBase[]> {
     return [new Builds(this.logger)];
   }
 }
