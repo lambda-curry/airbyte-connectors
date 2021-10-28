@@ -8,7 +8,8 @@
     "lint": "lerna run lint",
     "prepare": "lerna bootstrap --hoist && husky install",
     "test": "lerna run test -- -- --color",
-    "test-cov": "lerna run test -- -- --coverage --color"
+    "test-cov": "lerna run test -- -- --coverage --color",
+    "docker:qgenda": "docker build . --build-arg path=sources/qgenda-source -t qgenda-source"
   },
   "devDependencies": {
     "@types/eslint": "^7.28.0",

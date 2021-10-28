@@ -1,0 +1,2921 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "definitions": {
+        "LoginV2": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "error": {
+                    "type": "string"
+                },
+                "error_description": {
+                    "type": "string"
+                },
+                "access_token": {
+                    "type": "string"
+                },
+                "token_type": {
+                    "type": "string"
+                },
+                "expires_in": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [],
+            "title": "LoginV2",
+            "description": "Login v2\n\nPOST https://api.qgenda.com/v2/login\n\nAll future requests must have an “Authentication” header with the token type and token\nappended as the value.  \n\n**Example:**\n- Authorization: bearer eyJhbGciOiJBMjU2S1ciLCJlbmMiO...\n\n**Email and Password may only be sent in the request body.  Sending in the query string\nwill return a 'Bad Request' error.**"
+        },
+        "ScheduleElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StaffAbbrev": {
+                    "type": "string"
+                },
+                "TaskAbbrev": {
+                    "type": "string"
+                },
+                "ScheduleKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "CallRole": {
+                    "type": "null"
+                },
+                "CompKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Credit": {
+                    "type": "number",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StartDateUTC": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDateUTC": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "IsCred": {
+                    "type": "boolean"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                },
+                "IsLocked": {
+                    "type": "boolean"
+                },
+                "IsStruck": {
+                    "type": "boolean"
+                },
+                "Notes": {
+                    "type": "string"
+                },
+                "IsNotePrivate": {
+                    "type": "boolean"
+                },
+                "StaffBillSysId": {
+                    "type": "string"
+                },
+                "StaffEmail": {
+                    "type": "string"
+                },
+                "StaffEmrId": {
+                    "type": "string"
+                },
+                "StaffErpId": {
+                    "type": "string"
+                },
+                "StaffInternalId": {
+                    "type": "string"
+                },
+                "StaffExtCallSysId": {
+                    "type": "string"
+                },
+                "StaffFName": {
+                    "type": "string"
+                },
+                "StaffId": {
+                    "type": "string"
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StaffLName": {
+                    "type": "string"
+                },
+                "StaffMobilePhone": {
+                    "type": "string"
+                },
+                "StaffNpi": {
+                    "type": "string"
+                },
+                "StaffPager": {
+                    "type": "string"
+                },
+                "StaffPayrollId": {
+                    "type": "string"
+                },
+                "StaffTags": {
+                    "type": "null"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "TaskBillSysId": {
+                    "type": "null"
+                },
+                "TaskContactInformation": {
+                    "type": "null"
+                },
+                "TaskExtCallSysId": {
+                    "type": "null"
+                },
+                "TaskId": {
+                    "type": "string"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskName": {
+                    "type": "string"
+                },
+                "TaskPayrollId": {
+                    "type": "string"
+                },
+                "TaskEmrId": {
+                    "type": "string"
+                },
+                "TaskCallPriority": {
+                    "type": "string"
+                },
+                "TaskDepartmentId": {
+                    "type": "string"
+                },
+                "TaskIsPrintEnd": {
+                    "type": "boolean"
+                },
+                "TaskIsPrintStart": {
+                    "type": "boolean"
+                },
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskType": {
+                    "type": "string"
+                },
+                "TaskTags": {
+                    "type": "null"
+                },
+                "LocationName": {
+                    "type": "string"
+                },
+                "LocationAbbrev": {
+                    "type": "string"
+                },
+                "LocationID": {
+                    "type": "string"
+                },
+                "LocationAddress": {
+                    "type": "string"
+                },
+                "TimeZone": {
+                    "type": "string"
+                },
+                "LastModifiedDateUTC": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "LocationTags": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LocationTag"
+                            }
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "IsRotationTask": {
+                    "type": "boolean"
+                },
+                "TaskContactInstructions": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Date",
+                "StaffAbbrev",
+                "TaskAbbrev"
+            ],
+            "title": "ScheduleElement"
+        },
+        "LocationTag": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CategoryKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "CategoryName": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tag"
+                    }
+                }
+            },
+            "required": [
+                "CategoryKey",
+                "CategoryName",
+                "Tags"
+            ],
+            "title": "LocationTag"
+        },
+        "Tag": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Key": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Key",
+                "Name"
+            ],
+            "title": "Tag"
+        },
+        "OpenShift": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "ScheduleKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "OpenShiftCount": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "CallRole": {
+                    "type": "null"
+                },
+                "Credit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartDateUTC": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDateUTC": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "IsCred": {
+                    "type": "boolean"
+                },
+                "IsSaved": {
+                    "type": "boolean"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                },
+                "IsLocked": {
+                    "type": "boolean"
+                },
+                "IsStruck": {
+                    "type": "boolean"
+                },
+                "Notes": {
+                    "type": "string"
+                },
+                "IsNotePrivate": {
+                    "type": "boolean"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "TaskAbbrev": {
+                    "type": "string"
+                },
+                "TaskBillSysId": {
+                    "type": "null"
+                },
+                "TaskContactInstructions": {
+                    "type": "null"
+                },
+                "TaskId": {
+                    "type": "string"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskName": {
+                    "type": "string"
+                },
+                "TaskPayrollId": {
+                    "type": "null"
+                },
+                "TaskEmrId": {
+                    "type": "null"
+                },
+                "TaskIsPrintEnd": {
+                    "type": "boolean"
+                },
+                "TaskIsPrintStart": {
+                    "type": "boolean"
+                },
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskType": {
+                    "type": "string"
+                },
+                "TaskTags": {
+                    "type": "null"
+                },
+                "LocationKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "LocationName": {
+                    "type": "string"
+                },
+                "LocationAbbrev": {
+                    "type": "string"
+                },
+                "LocationAddress": {
+                    "type": "string"
+                },
+                "TimeZone": {
+                    "type": "string"
+                },
+                "LocationTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/LocationTag"
+                    }
+                }
+            },
+            "required": [
+                "Date",
+                "OpenShiftCount",
+                "TaskAbbrev"
+            ],
+            "title": "OpenShift"
+        },
+        "Rotation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                },
+                "IsLocked": {
+                    "type": "boolean"
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Timezone": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "EndDate",
+                "IsLocked",
+                "IsPublished",
+                "StaffKey",
+                "StartDate",
+                "TaskKey",
+                "Timezone"
+            ],
+            "title": "Rotation"
+        },
+        "RequestLimitClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Key": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "RecurringLength": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "CreditSource": {
+                    "type": "string"
+                },
+                "ErrorMessage": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "DailyTotalMaxAllowedMon": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedTue": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedWed": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedThu": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedFri": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSat": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSun": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "ShiftCredits": {
+                    "type": "array",
+                    "items": {}
+                },
+                "StaffLimits": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "CompanyKey",
+                "CreditSource",
+                "DailyTotalMaxAllowedFri",
+                "DailyTotalMaxAllowedMon",
+                "DailyTotalMaxAllowedSat",
+                "DailyTotalMaxAllowedSun",
+                "DailyTotalMaxAllowedThu",
+                "DailyTotalMaxAllowedTue",
+                "DailyTotalMaxAllowedWed",
+                "EndDate",
+                "ErrorMessage",
+                "IsActive",
+                "Key",
+                "Name",
+                "RecurringLength",
+                "ShiftCredits",
+                "StaffLimits",
+                "StartDate",
+                "Type"
+            ],
+            "title": "RequestLimitClass"
+        },
+        "RequestLimitTaskShift": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Key": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "RecurringLength": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "CreditSource": {
+                    "type": "string"
+                },
+                "ErrorMessage": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "DailyTotalMaxAllowedMon": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedTue": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedWed": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedThu": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedFri": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSat": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSun": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "ShiftCredits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ShiftCredit"
+                    }
+                },
+                "StaffLimits": {
+                    "type": "array",
+                    "items": {}
+                },
+                "ShiftsCredit": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ShiftCredit"
+                    }
+                }
+            },
+            "required": [
+                "CompanyKey",
+                "CreditSource",
+                "DailyTotalMaxAllowedFri",
+                "DailyTotalMaxAllowedMon",
+                "DailyTotalMaxAllowedSat",
+                "DailyTotalMaxAllowedSun",
+                "DailyTotalMaxAllowedThu",
+                "DailyTotalMaxAllowedTue",
+                "DailyTotalMaxAllowedWed",
+                "EndDate",
+                "ErrorMessage",
+                "IsActive",
+                "Key",
+                "Name",
+                "RecurringLength",
+                "StaffLimits",
+                "StartDate",
+                "Type"
+            ],
+            "title": "RequestLimitTaskShift",
+            "description": "RequestLimit/TaskShift\n\nPUT https://api.qgenda.com/v2/requestlimit/:requestLimitKey/taskshift/:taskShiftKey\n\nManage the credit associated to task shifts in request limits.\n\nResponse Object: [RequestLimit](#0850673a-a594-45f1-8e8a-310e6cb93bab)"
+        },
+        "ShiftCredit": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TaskId": {
+                    "type": "string"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskName": {
+                    "type": "string"
+                },
+                "TaskAbbreviation": {
+                    "type": "string"
+                },
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "IsIncluded": {
+                    "type": "boolean"
+                },
+                "DayOfTheWeek": {
+                    "type": "string"
+                },
+                "Credit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            },
+            "required": [
+                "Credit",
+                "DayOfTheWeek",
+                "IsIncluded",
+                "TaskAbbreviation",
+                "TaskId",
+                "TaskKey",
+                "TaskName",
+                "TaskShiftKey"
+            ],
+            "title": "ShiftCredit"
+        },
+        "RequestLimitStaffQuota": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Key": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "RecurringLength": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "CreditSource": {
+                    "type": "string"
+                },
+                "ErrorMessage": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "DailyTotalMaxAllowedMon": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedTue": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedWed": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedThu": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedFri": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSat": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "DailyTotalMaxAllowedSun": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "ShiftsCredit": {
+                    "type": "array",
+                    "items": {}
+                },
+                "StaffLimits": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StaffLimit"
+                    }
+                }
+            },
+            "required": [
+                "CompanyKey",
+                "CreditSource",
+                "DailyTotalMaxAllowedFri",
+                "DailyTotalMaxAllowedMon",
+                "DailyTotalMaxAllowedSat",
+                "DailyTotalMaxAllowedSun",
+                "DailyTotalMaxAllowedThu",
+                "DailyTotalMaxAllowedTue",
+                "DailyTotalMaxAllowedWed",
+                "EndDate",
+                "ErrorMessage",
+                "IsActive",
+                "Key",
+                "Name",
+                "RecurringLength",
+                "ShiftsCredit",
+                "StaffLimits",
+                "StartDate",
+                "Type"
+            ],
+            "title": "RequestLimitStaffQuota",
+            "description": "RequestLimit/StaffQuota\n\nPUT https://api.qgenda.com/v2/requestlimit/:requestLimitKey/staffquota/:staffid\n\nUpdates a staff quota for a request limit\n\nResponse Object: [RequestLimit](#0850673a-a594-45f1-8e8a-310e6cb93bab)"
+        },
+        "StaffLimit": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "StaffId": {
+                    "type": "string"
+                },
+                "StaffInternalId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StaffFirstName": {
+                    "type": "string"
+                },
+                "StaffLastName": {
+                    "type": "string"
+                },
+                "StaffAbbreviation": {
+                    "type": "string"
+                },
+                "StaffRequestLimit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StaffTotalLimit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            },
+            "required": [
+                "StaffAbbreviation",
+                "StaffFirstName",
+                "StaffId",
+                "StaffInternalId",
+                "StaffKey",
+                "StaffLastName",
+                "StaffRequestLimit",
+                "StaffTotalLimit"
+            ],
+            "title": "StaffLimit"
+        },
+        "TaskLocationElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Task": {
+                    "$ref": "#/definitions/PurpleTask"
+                },
+                "Location": {
+                    "$ref": "#/definitions/StaffMemberLocationLocation"
+                },
+                "IsCredentialed": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "IsCredentialed",
+                "Location",
+                "Task"
+            ],
+            "title": "TaskLocationElement"
+        },
+        "PurpleTaskLocation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Location": {
+                    "$ref": "#/definitions/LocationTaskLocation"
+                },
+                "Task": {
+                    "$ref": "#/definitions/LocationTaskTask"
+                }
+            },
+            "required": [
+                "Location",
+                "Task"
+            ],
+            "title": "PurpleTaskLocation"
+        },
+        "StaffMemberLocationLocation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "LocationKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Address": {
+                    "type": "null"
+                },
+                "Abbrev": {
+                    "type": "string"
+                },
+                "Notes": {
+                    "type": "null"
+                },
+                "TimeZone": {
+                    "type": "null"
+                },
+                "Tags": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Abbrev",
+                "Address",
+                "CompanyKey",
+                "Id",
+                "LocationKey",
+                "Name",
+                "Notes",
+                "Tags",
+                "TimeZone"
+            ],
+            "title": "StaffMemberLocationLocation"
+        },
+        "PurpleTask": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "TaskName": {
+                    "type": "string"
+                },
+                "TaskAbbreviation": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Tags",
+                "TaskAbbreviation",
+                "TaskId",
+                "TaskKey",
+                "TaskName"
+            ],
+            "title": "PurpleTask"
+        },
+        "LocationTaskLocation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Name": {
+                    "$ref": "#/definitions/Name"
+                }
+            },
+            "required": [
+                "Name"
+            ],
+            "title": "LocationTaskLocation"
+        },
+        "LocationTaskTask": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TaskName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "TaskName"
+            ],
+            "title": "LocationTaskTask"
+        },
+        "TaskTaskShift": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "DayOfWeek": {
+                    "type": "string"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "MaxStaff": {
+                    "type": "null"
+                },
+                "MinStaff": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "OffAfter": {
+                    "type": "null"
+                },
+                "StatCredit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StaffCount": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "EffectiveDate": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/EffectiveDate"
+                    }
+                }
+            },
+            "required": [
+                "DayOfWeek",
+                "EffectiveDate",
+                "EndTime",
+                "MaxStaff",
+                "MinStaff",
+                "OffAfter",
+                "StaffCount",
+                "StartTime",
+                "StatCredit",
+                "TaskShiftKey"
+            ],
+            "title": "TaskTaskShift",
+            "description": "Task/TaskShift\n\nPUT https://api.qgenda.com/v2/task/:taskId/taskshift/:taskShiftKey?dateFormat=String\n\nUpdates an existing effective dated task shift \n\nResponse Object: [TaskShift](#fc282b64-7eb3-499b-a031-51daa474a14d)"
+        },
+        "EffectiveDate": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "EffectiveFromDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EffectiveToDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "time"
+                },
+                "MaxStaff": {
+                    "type": "null"
+                },
+                "MinStaff": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "OffAfter": {
+                    "type": "null"
+                },
+                "StatCredit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Occurrence": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "EffectiveFromDate",
+                "EffectiveToDate",
+                "EndTime",
+                "IsActive",
+                "MaxStaff",
+                "MinStaff",
+                "Occurrence",
+                "OffAfter",
+                "StartTime",
+                "StatCredit"
+            ],
+            "title": "EffectiveDate"
+        },
+        "DailyPatientEncounterElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string"
+                },
+                "DailyConfigurationKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "EncounterKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "DailyCaseId": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "IsCancelled": {
+                    "type": "boolean"
+                },
+                "Room": {
+                    "$ref": "#/definitions/Room"
+                },
+                "Assignments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Assignment"
+                    }
+                },
+                "StandardFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Field"
+                    }
+                },
+                "PatientInformation": {
+                    "$ref": "#/definitions/PatientInformation"
+                },
+                "CreatedBySource": {
+                    "type": "string"
+                },
+                "ModifiedBySource": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Assignments",
+                "CompanyKey",
+                "CreatedBySource",
+                "DailyCaseId",
+                "DailyConfigurationKey",
+                "Date",
+                "EncounterKey",
+                "EndTime",
+                "IsCancelled",
+                "ModifiedBySource",
+                "PatientInformation",
+                "Room",
+                "StandardFields",
+                "StartTime"
+            ],
+            "title": "DailyPatientEncounterElement"
+        },
+        "Assignment": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "EncounterRoleKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "EncounterAssignmentKey": {
+                    "type": "null"
+                },
+                "StaffMemberKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StaffMemberAbbreviation": {
+                    "type": "string"
+                },
+                "StaffMemberFirstName": {
+                    "type": "string"
+                },
+                "StaffMemberLastName": {
+                    "type": "string"
+                },
+                "RoleName": {
+                    "type": "string"
+                },
+                "StaffMemberId": {
+                    "type": "string"
+                },
+                "IsNonStaff": {
+                    "type": "boolean"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                },
+                "IsDefaultRoomAssignment": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "EncounterAssignmentKey",
+                "EncounterRoleKey",
+                "IsDefaultRoomAssignment",
+                "IsNonStaff",
+                "IsPublished",
+                "RoleName",
+                "StaffMemberAbbreviation",
+                "StaffMemberFirstName",
+                "StaffMemberId",
+                "StaffMemberKey",
+                "StaffMemberLastName"
+            ],
+            "title": "Assignment"
+        },
+        "PatientInformation": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "PatientFirstName": {
+                    "type": "string"
+                },
+                "PatientLastName": {
+                    "type": "string"
+                },
+                "PatientDateOfBirth": {
+                    "type": "string"
+                },
+                "PatientClinicalNotes": {
+                    "type": "string"
+                },
+                "PatientCity": {
+                    "type": "string"
+                },
+                "PatientState": {
+                    "type": "string"
+                },
+                "PatientAge": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "PatientAge",
+                "PatientCity",
+                "PatientClinicalNotes",
+                "PatientDateOfBirth",
+                "PatientFirstName",
+                "PatientLastName",
+                "PatientState"
+            ],
+            "title": "PatientInformation"
+        },
+        "Room": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "RoomKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "RoomName": {
+                    "type": "string"
+                },
+                "LocationName": {
+                    "$ref": "#/definitions/Name"
+                },
+                "LocationKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            },
+            "required": [
+                "LocationKey",
+                "LocationName",
+                "RoomKey",
+                "RoomName"
+            ],
+            "title": "Room"
+        },
+        "Field": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Value": {
+                    "type": "string"
+                },
+                "EncounterFieldKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "IsRequired": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "EncounterFieldKey",
+                "IsRequired",
+                "Name",
+                "Type"
+            ],
+            "title": "Field"
+        },
+        "DailyDailyConfigurationElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "DailyConfigurationKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "EncounterRoles": {
+                    "type": "array",
+                    "items": {}
+                },
+                "EncounterFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Field"
+                    }
+                },
+                "EncounterPhiFields": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "DailyConfigurationKey",
+                "EncounterFields",
+                "EncounterPhiFields",
+                "EncounterRoles",
+                "Name"
+            ],
+            "title": "DailyDailyConfigurationElement"
+        },
+        "DailyDailyConfigurationDailyConfigurationKeyElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "DailyConfigurationKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "EncounterRoles": {
+                    "type": "array",
+                    "items": {}
+                },
+                "EncounterFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Field"
+                    }
+                },
+                "EncounterPhiFields": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "DailyConfigurationKey",
+                "EncounterFields",
+                "EncounterPhiFields",
+                "EncounterRoles",
+                "Name"
+            ],
+            "title": "DailyDailyConfigurationDailyConfigurationKeyElement"
+        },
+        "PurpleDailyCase": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "DailyCase": {
+                    "$ref": "#/definitions/FluffyDailyCase"
+                },
+                "Errors": {
+                    "type": "array",
+                    "items": {}
+                }
+            },
+            "required": [
+                "DailyCase",
+                "Errors"
+            ],
+            "title": "PurpleDailyCase"
+        },
+        "FluffyDailyCase": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "EmrId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Task": {
+                    "$ref": "#/definitions/DailyCaseTask"
+                },
+                "LocationName": {
+                    "type": "string"
+                },
+                "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Surgeon": {
+                    "type": "string"
+                },
+                "Procedure": {
+                    "type": "string"
+                },
+                "SupStaffKey": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PStaffKey"
+                    }
+                },
+                "SupStaffNpi": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "SupStaff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StaffMemberElement"
+                    }
+                },
+                "DPStaffKey": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PStaffKey"
+                    }
+                },
+                "DPStaffNpi": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "format": "integer"
+                    }
+                },
+                "DPStaff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/StaffMemberElement"
+                    }
+                },
+                "CustomTextFields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CustomTextField"
+                    }
+                },
+                "CustomCheckboxFields": {
+                    "type": "null"
+                },
+                "IsCancelled": {
+                    "type": "boolean"
+                },
+                "Duration": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "BaseUnits": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "ModifierUnits": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "TimeUnits": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "PatientFirstName": {
+                    "type": "string"
+                },
+                "PatientLastName": {
+                    "type": "string"
+                },
+                "PatientAge": {
+                    "type": "string"
+                },
+                "PatientGender": {
+                    "type": "string"
+                },
+                "PatientEmail": {
+                    "type": "null"
+                },
+                "PatientHomePhone": {
+                    "type": "null"
+                },
+                "PatientCellPhone": {
+                    "type": "null"
+                },
+                "PatientAlternatePhone": {
+                    "type": "null"
+                },
+                "PatientGuardianPhone": {
+                    "type": "null"
+                },
+                "PatientGuardianName": {
+                    "type": "null"
+                },
+                "PatientDOB": {
+                    "type": "string"
+                },
+                "PatientMRN": {
+                    "type": "null"
+                },
+                "PatientClinicalNotes": {
+                    "type": "null"
+                },
+                "PatientExtraNotes": {
+                    "type": "null"
+                },
+                "PatientAddress1": {
+                    "type": "null"
+                },
+                "PatientAddress2": {
+                    "type": "null"
+                },
+                "PatientCity": {
+                    "type": "null"
+                },
+                "PatientState": {
+                    "type": "null"
+                },
+                "PatientPostalCode": {
+                    "type": "null"
+                },
+                "PatientPrimaryInsuranceID": {
+                    "type": "null"
+                },
+                "PatientSecondaryInsuranceID": {
+                    "type": "null"
+                },
+                "PatientSocialSecurityNumber": {
+                    "type": "null"
+                },
+                "PatientMaritalStatus": {
+                    "type": "null"
+                },
+                "DailyCaseID": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            },
+            "required": [
+                "BaseUnits",
+                "CompanyKey",
+                "CustomCheckboxFields",
+                "CustomTextFields",
+                "DPStaff",
+                "DPStaffKey",
+                "DPStaffNpi",
+                "DailyCaseID",
+                "Date",
+                "Duration",
+                "EmrId",
+                "EndTime",
+                "IsCancelled",
+                "LocationName",
+                "ModifierUnits",
+                "PatientAddress1",
+                "PatientAddress2",
+                "PatientAge",
+                "PatientAlternatePhone",
+                "PatientCellPhone",
+                "PatientCity",
+                "PatientClinicalNotes",
+                "PatientDOB",
+                "PatientEmail",
+                "PatientExtraNotes",
+                "PatientFirstName",
+                "PatientGender",
+                "PatientGuardianName",
+                "PatientGuardianPhone",
+                "PatientHomePhone",
+                "PatientLastName",
+                "PatientMRN",
+                "PatientMaritalStatus",
+                "PatientPostalCode",
+                "PatientPrimaryInsuranceID",
+                "PatientSecondaryInsuranceID",
+                "PatientSocialSecurityNumber",
+                "PatientState",
+                "Procedure",
+                "StartTime",
+                "SupStaff",
+                "SupStaffKey",
+                "SupStaffNpi",
+                "Surgeon",
+                "Task",
+                "TaskKey",
+                "TimeUnits"
+            ],
+            "title": "FluffyDailyCase"
+        },
+        "CustomTextField": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "ID": {
+                    "type": "string"
+                },
+                "Label": {
+                    "type": "string"
+                },
+                "Value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "ID",
+                "Label",
+                "Value"
+            ],
+            "title": "CustomTextField"
+        },
+        "StaffMemberElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Abbreviation": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Order": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StaffID": {
+                    "type": "string"
+                },
+                "StaffMemberKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "Abbreviation",
+                "FirstName",
+                "IsPublished",
+                "LastName",
+                "Order",
+                "StaffID",
+                "StaffMemberKey"
+            ],
+            "title": "StaffMemberElement"
+        },
+        "PStaffKey": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "StaffMemberKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "IsPublished",
+                "StaffMemberKey"
+            ],
+            "title": "PStaffKey"
+        },
+        "DailyCaseTask": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "Abbreviation": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "TaskId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "DepartmentID": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Abbreviation",
+                "DepartmentID",
+                "IsActive",
+                "Name",
+                "TaskId",
+                "TaskKey"
+            ],
+            "title": "DailyCaseTask"
+        },
+        "TimeEventElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "ActualClockIn": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "ActualClockOut": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "DayOfWeek": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Duration": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "EffectiveClockIn": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EffectiveClockOut": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "IsClockInGeoVerified": {
+                    "type": "boolean"
+                },
+                "IsClockOutGeoVerified": {
+                    "type": "boolean"
+                },
+                "IsEarly": {
+                    "type": "boolean"
+                },
+                "IsLate": {
+                    "type": "boolean"
+                },
+                "IsExcessiveDuration": {
+                    "type": "boolean"
+                },
+                "IsExtended": {
+                    "type": "boolean"
+                },
+                "IsStruck": {
+                    "type": "boolean"
+                },
+                "IsUnplanned": {
+                    "type": "boolean"
+                },
+                "FlagsResolved": {
+                    "type": "boolean"
+                },
+                "Notes": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "ScheduleEntry": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ScheduleEntry"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "ScheduleEntryKey": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    ]
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StaffMember": {
+                    "$ref": "#/definitions/StaffMemberElement"
+                },
+                "Task": {
+                    "$ref": "#/definitions/DailyCaseTask"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TimePunchEventKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "TimeZone": {
+                    "type": "string"
+                },
+                "ActualClockInLocal": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "ActualClockOutLocal": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EffectiveClockInLocal": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EffectiveClockOutLocal": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "LastModifiedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "ActualClockIn",
+                "ActualClockInLocal",
+                "ActualClockOut",
+                "ActualClockOutLocal",
+                "CompanyKey",
+                "Date",
+                "DayOfWeek",
+                "Duration",
+                "EffectiveClockIn",
+                "EffectiveClockInLocal",
+                "EffectiveClockOut",
+                "EffectiveClockOutLocal",
+                "FlagsResolved",
+                "IsClockInGeoVerified",
+                "IsClockOutGeoVerified",
+                "IsEarly",
+                "IsExcessiveDuration",
+                "IsExtended",
+                "IsLate",
+                "IsStruck",
+                "IsUnplanned",
+                "LastModifiedDate",
+                "Notes",
+                "ScheduleEntry",
+                "ScheduleEntryKey",
+                "StaffKey",
+                "StaffMember",
+                "Task",
+                "TaskKey",
+                "TaskShiftKey",
+                "TimePunchEventKey",
+                "TimeZone"
+            ],
+            "title": "TimeEventElement"
+        },
+        "ScheduleEntry": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Credit": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "EndTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "IsCredit": {
+                    "type": "boolean"
+                },
+                "IsLocked": {
+                    "type": "boolean"
+                },
+                "IsPublished": {
+                    "type": "boolean"
+                },
+                "IsSaved": {
+                    "type": "boolean"
+                },
+                "IsStruck": {
+                    "type": "boolean"
+                },
+                "Note": {
+                    "type": "string"
+                },
+                "ScheduleKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StaffMemberKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "StartTime": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "TaskKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "TaskShiftKey": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            },
+            "required": [
+                "CompKey",
+                "Credit",
+                "Date",
+                "EndDate",
+                "EndTime",
+                "IsCredit",
+                "IsLocked",
+                "IsPublished",
+                "IsSaved",
+                "IsStruck",
+                "Note",
+                "ScheduleKey",
+                "StaffMemberKey",
+                "StartDate",
+                "StartTime",
+                "TaskKey",
+                "TaskShiftKey"
+            ],
+            "title": "ScheduleEntry"
+        },
+        "StaffMemberStaffID": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Abbrev": {
+                    "type": "string"
+                },
+                "BgColor": {
+                    "type": "string"
+                },
+                "BillSysId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "CompKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "SsoId": {
+                    "type": "null"
+                },
+                "EmrId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "ErpId": {
+                    "type": "string"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "ExtCallSysId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "HomePhone": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "MobilePhone": {
+                    "type": "string"
+                },
+                "Npi": {
+                    "type": "string"
+                },
+                "Pager": {
+                    "type": "string"
+                },
+                "PayPeriodGroupName": {
+                    "type": "string"
+                },
+                "PayrollId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "RegHours": {
+                    "anyOf": [
+                        {
+                            "type": "integer",
+                            "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "StaffId": {
+                    "type": "string"
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "TextColor": {
+                    "type": "string"
+                },
+                "Addr1": {
+                    "type": "string"
+                },
+                "Addr2": {
+                    "type": "string"
+                },
+                "City": {
+                    "type": "string"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "Zip": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "StaffTypeKey": {
+                    "type": "string"
+                },
+                "BillingTypeKey": {
+                    "type": "string"
+                },
+                "UserProfileKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "UserProfile": {
+                    "type": "string"
+                },
+                "PayrollStartDate": {
+                    "type": "null"
+                },
+                "PayrollEndDate": {
+                    "type": "null"
+                },
+                "TimeClockStartDate": {
+                    "type": "null"
+                },
+                "TimeClockEndDate": {
+                    "type": "null"
+                },
+                "TimeClockKioskPIN": {
+                    "type": "null"
+                },
+                "IsAutoApproveSwap": {
+                    "type": "boolean"
+                },
+                "DailyUnitAverage": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StaffInternalId": {
+                    "type": "string"
+                },
+                "UserLastLoginDateTimeUtc": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "SourceOfLogin": {
+                    "type": "string"
+                },
+                "CalSyncKey": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    ]
+                },
+                "Tags": {
+                    "anyOf": [
+                        {
+                            "type": "array",
+                            "items": {}
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "TTCMTags": {
+                    "type": "null"
+                },
+                "Skillset": {
+                    "type": "null"
+                },
+                "Profiles": {
+                    "type": "null"
+                },
+                "ContactInstructions": {
+                    "type": "null"
+                },
+                "OtherNumber1": {
+                    "type": "null"
+                },
+                "OtherNumber2": {
+                    "type": "null"
+                },
+                "OtherNumber3": {
+                    "type": "null"
+                },
+                "OtherNumberType1": {
+                    "type": "null"
+                },
+                "OtherNumberType2": {
+                    "type": "null"
+                },
+                "OtherNumberType3": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Abbrev",
+                "Addr1",
+                "Addr2",
+                "BgColor",
+                "BillSysId",
+                "BillingTypeKey",
+                "CalSyncKey",
+                "City",
+                "CompKey",
+                "DailyUnitAverage",
+                "Email",
+                "EmrId",
+                "EndDate",
+                "ExtCallSysId",
+                "FirstName",
+                "HomePhone",
+                "IsActive",
+                "IsAutoApproveSwap",
+                "LastName",
+                "MobilePhone",
+                "Npi",
+                "Pager",
+                "PayPeriodGroupName",
+                "PayrollEndDate",
+                "PayrollId",
+                "PayrollStartDate",
+                "RegHours",
+                "Skillset",
+                "SourceOfLogin",
+                "SsoId",
+                "StaffId",
+                "StaffInternalId",
+                "StaffKey",
+                "StaffTypeKey",
+                "StartDate",
+                "State",
+                "Tags",
+                "TextColor",
+                "TimeClockEndDate",
+                "TimeClockKioskPIN",
+                "TimeClockStartDate",
+                "UserLastLoginDateTimeUtc",
+                "UserProfile",
+                "UserProfileKey",
+                "Zip"
+            ],
+            "title": "StaffMemberStaffID",
+            "description": "StaffMember/StaffId\n\nPUT https://api.qgenda.com/v2/staffmember/:staffId?dateFormat=String\n\nUpdates a staff member. Any fields not included will not be changed. Any fields included\nwill be changed.\n\nResponse Object: [StaffMemberDetail](#30f043bf-d75c-49a2-9128-50d69cae794b)"
+        },
+        "StaffMember": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Abbrev": {
+                    "type": "string"
+                },
+                "BgColor": {
+                    "type": "string"
+                },
+                "BillSysId": {
+                    "type": "string"
+                },
+                "CompKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "ContactInstructions": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "SsoId": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "EmrId": {
+                    "type": "string"
+                },
+                "ErpId": {
+                    "type": "string"
+                },
+                "EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "ExtCallSysId": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "HomePhone": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "MobilePhone": {
+                    "type": "string"
+                },
+                "Npi": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "OtherNumber1": {
+                    "type": "string"
+                },
+                "OtherNumber2": {
+                    "type": "string"
+                },
+                "OtherNumber3": {
+                    "type": "string"
+                },
+                "OtherNumberType1": {
+                    "type": "string"
+                },
+                "OtherNumberType2": {
+                    "type": "string"
+                },
+                "OtherNumberType3": {
+                    "type": "string"
+                },
+                "Pager": {
+                    "type": "string"
+                },
+                "PayPeriodGroupName": {
+                    "type": "string"
+                },
+                "PayrollId": {
+                    "type": "string"
+                },
+                "RegHours": {
+                    "type": "string"
+                },
+                "StaffId": {
+                    "type": "string"
+                },
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "TextColor": {
+                    "type": "string"
+                },
+                "Addr1": {
+                    "type": "string"
+                },
+                "Addr2": {
+                    "type": "string"
+                },
+                "City": {
+                    "type": "string"
+                },
+                "State": {
+                    "type": "string"
+                },
+                "Zip": {
+                    "type": "string"
+                },
+                "IsActive": {
+                    "type": "boolean"
+                },
+                "StaffTypeKey": {
+                    "type": "string"
+                },
+                "BillingTypeKey": {
+                    "type": "string"
+                },
+                "UserProfileKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "UserProfile": {
+                    "type": "string"
+                },
+                "PayrollStartDate": {
+                    "type": "string"
+                },
+                "PayrollEndDate": {
+                    "type": "string"
+                },
+                "TimeClockStartDate": {
+                    "type": "string"
+                },
+                "TimeClockEndDate": {
+                    "type": "string"
+                },
+                "TimeClockKioskPIN": {
+                    "type": "null"
+                },
+                "IsAutoApproveSwap": {
+                    "type": "boolean"
+                },
+                "DailyUnitAverage": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "StaffInternalId": {
+                    "type": "string"
+                },
+                "UserLastLoginDateTimeUtc": {
+                    "type": "null"
+                },
+                "SourceOfLogin": {
+                    "type": "string"
+                },
+                "CalSyncKey": {
+                    "type": "null"
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {}
+                },
+                "Skillset": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Abbrev",
+                "Addr1",
+                "Addr2",
+                "BgColor",
+                "BillSysId",
+                "BillingTypeKey",
+                "CalSyncKey",
+                "City",
+                "CompKey",
+                "ContactInstructions",
+                "DailyUnitAverage",
+                "Email",
+                "EmrId",
+                "EndDate",
+                "ExtCallSysId",
+                "FirstName",
+                "HomePhone",
+                "IsActive",
+                "IsAutoApproveSwap",
+                "LastName",
+                "MobilePhone",
+                "Npi",
+                "OtherNumber1",
+                "OtherNumber2",
+                "OtherNumber3",
+                "OtherNumberType1",
+                "OtherNumberType2",
+                "OtherNumberType3",
+                "Pager",
+                "PayPeriodGroupName",
+                "PayrollEndDate",
+                "PayrollId",
+                "PayrollStartDate",
+                "RegHours",
+                "Skillset",
+                "SourceOfLogin",
+                "SsoId",
+                "StaffId",
+                "StaffInternalId",
+                "StaffKey",
+                "StaffTypeKey",
+                "StartDate",
+                "State",
+                "Tags",
+                "TextColor",
+                "TimeClockEndDate",
+                "TimeClockKioskPIN",
+                "TimeClockStartDate",
+                "UserLastLoginDateTimeUtc",
+                "UserProfile",
+                "UserProfileKey",
+                "Zip"
+            ],
+            "title": "StaffMember",
+            "description": "StaffMember\n\nPUT https://api.qgenda.com/v2/staffmember?dateFormat=String\n\nUpdates a staff member. Any fields not included will not be changed. Any fields included\nwill be changed.\nCan use NPI, StaffId, BillSysId, and/or Email to match to a staff member. That order\nrespectively will be used for preference when multiple of those properties are provided.\n\nResponse Object: [StaffMemberDetail](#30f043bf-d75c-49a2-9128-50d69cae794b)"
+        },
+        "StaffMemberLocationElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Staff": {
+                    "$ref": "#/definitions/Staff"
+                },
+                "Location": {
+                    "$ref": "#/definitions/StaffMemberLocationLocation"
+                },
+                "IsCredentialed": {
+                    "type": "boolean"
+                },
+                "InactiveDate": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "Credentials": {
+                    "type": "array",
+                    "items": {}
+                },
+                "Tags": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Credentials",
+                "InactiveDate",
+                "IsCredentialed",
+                "Location",
+                "Staff",
+                "Tags"
+            ],
+            "title": "StaffMemberLocationElement"
+        },
+        "Staff": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "StaffKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "Id": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Email",
+                "FirstName",
+                "Id",
+                "LastName",
+                "StaffKey",
+                "Tags"
+            ],
+            "title": "Staff"
+        },
+        "StaffMemberSkillSet": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "StaffFirstName": {
+                    "type": "string"
+                },
+                "StaffLastName": {
+                    "type": "string"
+                },
+                "StaffAbbrev": {
+                    "type": "string"
+                },
+                "StaffId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "TaskName": {
+                    "type": "string"
+                },
+                "TaskAbbrev": {
+                    "type": "string"
+                },
+                "TaskId": {
+                    "type": "string",
+                    "format": "integer"
+                },
+                "IsSkilledMon": {
+                    "type": "boolean"
+                },
+                "MonOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledTue": {
+                    "type": "boolean"
+                },
+                "TueOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledWed": {
+                    "type": "boolean"
+                },
+                "WedOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledThu": {
+                    "type": "boolean"
+                },
+                "ThuOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledFri": {
+                    "type": "boolean"
+                },
+                "FriOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledSat": {
+                    "type": "boolean"
+                },
+                "SatOccurrence": {
+                    "type": "string"
+                },
+                "IsSkilledSun": {
+                    "type": "boolean"
+                },
+                "SunOccurrence": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "FriOccurrence",
+                "IsSkilledFri",
+                "IsSkilledMon",
+                "IsSkilledSat",
+                "IsSkilledSun",
+                "IsSkilledThu",
+                "IsSkilledTue",
+                "IsSkilledWed",
+                "MonOccurrence",
+                "SatOccurrence",
+                "StaffAbbrev",
+                "StaffFirstName",
+                "StaffId",
+                "StaffLastName",
+                "SunOccurrence",
+                "TaskAbbrev",
+                "TaskId",
+                "TaskName",
+                "ThuOccurrence",
+                "TueOccurrence",
+                "WedOccurrence"
+            ],
+            "title": "StaffMemberSkillSet",
+            "description": "StaffMember/SkillSet\n\nPUT https://api.qgenda.com/v2/staffmember/:staffId/skillset/:taskId\n\nUpdates a staff's ability to work a task\n\nResponse Object: [SkillSet](#4484d4f1-3a53-4630-8398-a627eb740a34)"
+        },
+        "OrganizationElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyName": {
+                    "type": "string"
+                },
+                "CompanyAbbr": {
+                    "anyOf": [
+                        {
+                            "type": "null"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ]
+                },
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "DateCreatedUtc": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "CompanyAbbr",
+                "CompanyKey",
+                "CompanyName",
+                "DateCreatedUtc"
+            ],
+            "title": "OrganizationElement"
+        },
+        "LocationElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "LocationKey": {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "Address": {
+                    "type": "null"
+                },
+                "Abbrev": {
+                    "type": "string"
+                },
+                "Notes": {
+                    "type": "null"
+                },
+                "TimeZone": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "title": "LocationElement"
+        },
+        "LocationTask": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Location": {
+                    "$ref": "#/definitions/LocationTaskLocation"
+                },
+                "Task": {
+                    "$ref": "#/definitions/LocationTaskTask"
+                }
+            },
+            "required": [
+                "Location",
+                "Task"
+            ],
+            "title": "LocationTask"
+        },
+        "CompanyElement": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "CompanyKey": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "CompanyName": {
+                    "type": "string"
+                },
+                "CompanyAbbreviation": {
+                    "type": "null"
+                },
+                "CompanyLocation": {
+                    "type": "string"
+                },
+                "CompanyPhoneNumber": {
+                    "type": "string"
+                },
+                "Profiles": {
+                    "type": "null"
+                },
+                "Organizations": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "CompanyAbbreviation",
+                "CompanyKey",
+                "CompanyLocation",
+                "CompanyName",
+                "CompanyPhoneNumber",
+                "Organizations",
+                "Profiles"
+            ],
+            "title": "CompanyElement"
+        },
+        "RequestLimit": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/RequestLimitClass"
+                },
+                {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            ],
+            "title": "RequestLimit",
+            "description": "RequestLimit\n\nDELETE https://api.qgenda.com/v2/requestlimit/:requestLimitKey\n\nDeletes a request limit."
+        },
+        "TaskLocation": {
+            "anyOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TaskLocationElement"
+                    }
+                },
+                {
+                    "$ref": "#/definitions/PurpleTaskLocation"
+                }
+            ],
+            "title": "TaskLocation",
+            "description": "Task/Location\n\nGET https://api.qgenda.com/v2/task/:taskid/location?companyKey=GUID&$select=OData\nExpression&$filter=OData Expression&$orderby=OData Expression&$expand=OData Expression\n\nReturns all locations the task belongs to.\n\nResponse Object: Array of [TaskLocation](#8bc71b35-1bbc-4a8d-81cf-dbfaed8ff901)"
+        },
+        "DailyCase": {
+            "anyOf": [
+                {
+                    "$ref": "#/definitions/PurpleDailyCase"
+                },
+                {
+                    "type": "integer",
+                    "description": "PayRate\n\nDELETE https://api.qgenda.com/v2/payrate/:payRateKey?CompanyKey=GUID\n\nDeletes an existing pay rate\nStaffTarget/TaskShift\n\nDELETE https://api.qgenda.com/v2/stafftarget/:targetKey/taskshift/:taskShiftKey\n\nRemoves a task shift from a staff target"
+                }
+            ],
+            "title": "DailyCase",
+            "description": "DailyCase\n\nDELETE https://api.qgenda.com/v2/dailycase/:caseId?CompanyKey=GUID\n\nDeletes an existing daily case by a unique case ID."
+        },
+        "Name": {
+            "type": "string",
+            "enum": [
+                "Location 1"
+            ],
+            "title": "Name"
+        }
+    }
+}
