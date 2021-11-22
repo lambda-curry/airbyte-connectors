@@ -27,10 +27,10 @@ export class QGenda {
 
   public static instance(config: QGendaConfig, logger: AirbyteLogger): QGenda {
     if (typeof config.email !== 'string') {
-      throw new VError('server_url: must be a string');
+      throw new VError('email: must be a string');
     }
     if (typeof config.password !== 'string') {
-      throw new VError('user: must be a string');
+      throw new VError('password: must be a string');
     }
 
     const client = axios.create({

@@ -9,7 +9,7 @@
     "prepare": "lerna bootstrap --hoist && husky install",
     "test": "lerna run test -- -- --color",
     "test-cov": "lerna run test -- -- --coverage --color",
-    "docker:qgenda": "docker build . --build-arg path=sources/qgenda-source -t qgenda-source"
+    "docker:qgenda": "docker build . --build-arg path=sources/qgenda-source -t lambdacurry/qgenda-source:0.1.0 && docker push lambdacurry/qgenda-source:0.1.0"
   },
   "devDependencies": {
     "@types/eslint": "^7.28.0",
