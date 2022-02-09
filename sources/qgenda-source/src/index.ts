@@ -8,33 +8,36 @@ import {
 } from 'faros-airbyte-cdk';
 import VError from 'verror';
 
-import {Jenkins, JenkinsConfig} from './jenkins';
-import {Builds, Jobs} from './streams';
+import {QGenda, QGendaConfig} from './qgenda';
+import {Company, Schedule, StaffMember} from './streams';
 
 /** The main entry point. */
 export function mainCommand(): Command {
   const logger = new AirbyteLogger();
-  const source = new JenkinsSource(logger);
+  const source = new QGendaSource(logger);
   return new AirbyteSourceRunner(logger, source).mainCommand();
 }
 
-/** Jenkins source implementation. */
-export class JenkinsSource extends AirbyteSourceBase {
+export class QGendaSource extends AirbyteSourceBase {
   async spec(): Promise<AirbyteSpec> {
     return new AirbyteSpec(require('../resources/spec.json'));
   }
   async checkConnection(
-    config: JenkinsConfig
+    config: QGendaConfig
   ): Promise<[boolean, VError | undefined]> {
     try {
-      const jenkins = Jenkins.instance(config as JenkinsConfig, this.logger);
-      await jenkins.checkConnection();
+      const qgenda = QGenda.instance(config as QGendaConfig, this.logger);
+      await qgenda.checkConnection();
     } catch (err: any) {
       return [false, err];
     }
     return [true, undefined];
   }
-  async streams(config: JenkinsConfig): Promise<AirbyteStreamBase[]> {
-    return [new Builds(config, this.logger), new Jobs(config, this.logger)];
+  async streams(config: QGendaConfig): Promise<AirbyteStreamBase[]> {
+    return [
+      new Company(config, this.logger),
+      new Schedule(config, this.logger),
+      new StaffMember(config, this.logger),
+    ];
   }
 }

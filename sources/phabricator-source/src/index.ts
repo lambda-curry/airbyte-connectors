@@ -36,7 +36,7 @@ class PhabricatorSource extends AirbyteSourceBase {
     }
     return [true, undefined];
   }
-  streams(config: AirbyteConfig): AirbyteStreamBase[] {
+  async streams(config: AirbyteConfig): Promise<AirbyteStreamBase[]> {
     return [
       new Repositories(config as PhabricatorConfig, this.logger),
       new Commits(config as PhabricatorConfig, this.logger),
